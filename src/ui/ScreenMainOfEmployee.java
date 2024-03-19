@@ -1,4 +1,4 @@
-package gui;
+package ui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ScreenMainOfManager extends JFrame {
-    public ScreenMainOfManager() {
+public class ScreenMainOfEmployee extends JFrame {
+    public ScreenMainOfEmployee() {
         // Thiết lập cửa sổ chính
         setTitle("Trung Tâm Quản Lý");
         setSize(800, 600); // Kích thước cửa sổ
@@ -40,8 +40,7 @@ public class ScreenMainOfManager extends JFrame {
 
         // Tạo menu bar
         JMenuBar menuBar = new JMenuBar();
-        String[] mainMenuNames = { "Quản lý thuốc", "Quản lý nhân viên", "Quản lý khách hàng", "Quản lý hoá đơn",
-                "Báo cáo thống kê" };
+        String[] mainMenuNames = { "Quản lý thuốc", "Quản lý khách hàng", "Quản lý hoá đơn", "Báo cáo thống kê" };
         for (String name : mainMenuNames) {
             JMenu menu = new JMenu(name);
             menu.addMouseListener(new MouseAdapter() {
@@ -67,7 +66,7 @@ public class ScreenMainOfManager extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ScreenMainOfManager();
+                new ScreenMainOfEmployee();
             }
         });
     }
