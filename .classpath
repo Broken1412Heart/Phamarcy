@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/sqljdbc42.jar"/>
+	<classpathentry kind="lib" path="D:/Documents/Temp/Desktop/PTUD/CodeProject/QUANLYHIEUTHUOCTAY/lib/jcalendar-1.4.zip"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/.m2/repository/com/toedter/jcalendar/1.4/jcalendar-1.4.jar" sourcepath="C:/Users/Harry/.m2/repository/com/toedter/jcalendar/1.4/jcalendar-1.4-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="com.toedter"/>
+			<attribute name="maven.artifactId" value="jcalendar"/>
+			<attribute name="maven.version" value="1.4"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

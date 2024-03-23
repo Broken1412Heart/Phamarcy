@@ -158,6 +158,16 @@ public class Staff {
                 + ", staffRole=" + staffRole + ", staffStatus=" + staffStatus + ", staffGender=" + staffGender
                 + ", staffDOB=" + staffDOB + ", staffStartDate=" + staffStartDate + "]";
     }
+
+    public Object getStaffPosition() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getStaffPosition'");
+    }
+
+    public Object getStaffStatus() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getStaffStatus'");
+    }
     
     
 }
