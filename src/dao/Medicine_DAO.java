@@ -1,19 +1,26 @@
 package dao;
 
-public class Medicine_DAO {
-    public void insertMedicine() {
-        // code here
-    }
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-    public void updateMedicine() {
-        // code here
-    }
+import entity.Medicine;
 
-    public void deleteMedicine() {
-        // code here
-    }
+public interface Medicine_DAO {
+    public ArrayList<Medicine> getTatCaSanPham();
 
-    public void getMedicine() {
-        // code here
-    }
+    public boolean themSanPham(Medicine sanPham);
+
+    public boolean xoaSanPham(String maSanPham);
+
+    public boolean capNhatSanPham(Medicine sanPham);
+
+    public ArrayList<Medicine> timKiemSanPham(String tuKhoa);
+
+    public ArrayList<Medicine> timKiemSanPhamTheoLoai(String tuKhoa);
+
+    public Medicine timSanPhamTheoMa(String ma);
+
+    public boolean themSanPhamTuExcel(File file) throws IOException, SQLException;
 }

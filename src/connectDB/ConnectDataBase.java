@@ -29,17 +29,17 @@ public class ConnectDataBase {
         }
     }
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         return con;
     }
 
-    // test connection
-    // public static void main(String[] args) throws SQLException {
-    // ConnectDataBase.getInstance().connect();
-    // if (ConnectDataBase.getConnection() != null) {
-    // System.out.println("Connect success");
-    // } else {
-    // System.out.println("Connect fail");
-    // }
-    // }
+//     test connection
+//     public static void main(String[] args) throws SQLException {
+//     ConnectDataBase.getInstance().connect();
+//     if (ConnectDataBase.getConnection() != null) {
+//     System.out.println("Connect success");
+//     } else {
+//     System.out.println("Connect fail");
+//     }
+//     }
 }

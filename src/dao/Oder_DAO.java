@@ -1,19 +1,15 @@
 package dao;
 
-public class Oder_DAO {
-    public void insertOder() {
-        // code here
-    }
+import java.util.ArrayList;
 
-    public void updateOder() {
-        // code here
-    }
+public interface Oder_DAO {
+    public void insertOder();
 
-    public void deleteOder() {
-        // code here
-    }
+    public void updateOder();
 
-    public void getOder() {
-        // code here
-    }
+    public void deleteOder();
+
+    public void getOder();
+
+    public ArrayList<String> getOderList();
 }

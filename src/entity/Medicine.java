@@ -4,16 +4,16 @@ public class Medicine {
     private String MedicineID;
     private String MedicineName;
     private String MedicineType;
-    private String MedicineUnit;
+    private Double MedicineUnit;
     private int MedicinePrice;
-    private int MedicineQuantity;
+    private Double MedicineQuantity;
     private String MedicineDescription;
 
     public Medicine() {
     }
 
-    public Medicine(String medicineID, String medicineName, String medicineType, String medicineUnit, int medicinePrice,
-            int medicineQuantity, String medicineDescription) {
+    public Medicine(String medicineID, String medicineName, String medicineType, Double medicineUnit, int medicinePrice,
+            Double medicineQuantity, String medicineDescription) {
         MedicineID = medicineID;
         MedicineName = medicineName;
         MedicineType = medicineType;
@@ -21,6 +21,11 @@ public class Medicine {
         MedicinePrice = medicinePrice;
         MedicineQuantity = medicineQuantity;
         MedicineDescription = medicineDescription;
+    }
+
+    public Medicine(String maThuoc, String tenThuoc, String moTa, Double donGia, int soLuong, Double giamGia,
+            String trangThai, Supplier supplier) {
+                
     }
 
     public String getMedicineID() {
@@ -35,6 +40,22 @@ public class Medicine {
         return MedicineName;
     }
 
+    public Double getMedicineUnit() {
+        return MedicineUnit;
+    }
+
+    public void setMedicineUnit(Double medicineUnit) {
+        MedicineUnit = medicineUnit;
+    }
+
+    public Double getMedicineQuantity() {
+        return MedicineQuantity;
+    }
+
+    public void setMedicineQuantity(Double medicineQuantity) {
+        MedicineQuantity = medicineQuantity;
+    }
+
     public void setMedicineName(String medicineName) {
         MedicineName = medicineName;
     }
@@ -47,13 +68,7 @@ public class Medicine {
         MedicineType = medicineType;
     }
 
-    public String getMedicineUnit() {
-        return MedicineUnit;
-    }
-
-    public void setMedicineUnit(String medicineUnit) {
-        MedicineUnit = medicineUnit;
-    }
+    
 
     public int getMedicinePrice() {
         return MedicinePrice;
@@ -61,14 +76,6 @@ public class Medicine {
 
     public void setMedicinePrice(int medicinePrice) {
         MedicinePrice = medicinePrice;
-    }
-
-    public int getMedicineQuantity() {
-        return MedicineQuantity;
-    }
-
-    public void setMedicineQuantity(int medicineQuantity) {
-        MedicineQuantity = medicineQuantity;
     }
 
     public String getMedicineDescription() {

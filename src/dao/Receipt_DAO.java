@@ -1,19 +1,12 @@
 package dao;
 
-public class Receipt_DAO {
-    public void insertReceipt() {
-        // code here
-    }
+public interface Receipt_DAO {
+    public void insertReceipt();
 
-    public void updateReceipt() {
-        // code here
-    }
+    public void updateReceipt();
 
-    public void deleteReceipt() {
-        // code here
-    }
+    public void deleteReceipt();
 
-    public void getReceipt() {
-        // code here
-    }
+    public void getReceipt();
+
 }

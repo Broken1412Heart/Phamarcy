@@ -1,19 +1,19 @@
 package dao;
 
-public class Staff_DAO {
-    public void insertStaff() {
-        // code here
-    }
+import java.util.List;
 
-    public void updateStaff() {
-        // code here
-    }
+import entity.Staff;
 
-    public void deleteStaff() {
-        // code here
-    }
+public interface Staff_DAO {
+    public List<Staff> getTatCaStaff();
 
-    public void getStaff() {
-        // code here
-    }
+    public boolean themStaff(Staff Staff);
+
+    public boolean capNhatThongTinStaff(Staff Staff);
+
+    public boolean xoaStaff(String maStaff);
+
+    public List<Staff> timKiemStaff(String noiDungTim);
+
+    public Staff layThongTinStaffTheoMaStaff(String maStaff);
 }

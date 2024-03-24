@@ -13,5 +13,16 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/commons-codec-1.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/commons-compress-1.21.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/commons-io-2.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/commons-math3-3.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/curvesapi-1.07.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/poi-5.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/poi-ooxml-5.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/poi-ooxml-lite-5.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/SparseBitSet-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Harry/source/repos/Phamarcy/lib/xmlbeans-5.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
