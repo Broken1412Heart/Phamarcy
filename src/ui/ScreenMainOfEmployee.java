@@ -8,6 +8,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ScreenMainOfEmployee extends JFrame {
+    protected JMenu menuStaff;
+    protected JMenu menuStatisticRevenue;
+    protected JMenu menuStatisticsBestSale;
+
     public ScreenMainOfEmployee() {
         // Thiết lập cửa sổ chính
         setTitle("Trung Tâm Quản Lý");

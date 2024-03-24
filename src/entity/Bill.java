@@ -1,21 +1,31 @@
 package entity;
 
+import java.util.Date;
+
 public class Bill {
     private String billID;
-    private String employeeID;
-    private String customerID;
-    private String date;
-    private int total;
+    protected Customer customer;
+    protected Staff staff;
+    private Date date;
+    private double total;
+    private double discountAmount;
+
+    private boolean status;
 
     public Bill() {
     }
 
-    public Bill(String billID, String employeeID, String customerID, String date, int total) {
+    public Bill(String billID) {
         this.billID = billID;
-        this.employeeID = employeeID;
-        this.customerID = customerID;
+    }
+
+    public Bill(String billID, Customer customer, Staff staff, Date date, double total, double discountAmount) {
+        this.billID = billID;
+        this.customer = customer;
+        this.staff = staff;
         this.date = date;
         this.total = total;
+        this.discountAmount = discountAmount;
     }
 
     public String getBillID() {
@@ -26,37 +36,58 @@ public class Bill {
         this.billID = billID;
     }
 
-    public String getEmployeeID() {
-        return employeeID;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setEmployeeID(String employeeID) {
-        this.employeeID = employeeID;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public String getCustomerID() {
-        return customerID;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setCustomerID(String customerID) {
-        this.customerID = customerID;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(Date ngayDat) {
+        this.date = ngayDat;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
-    
+    public double getDiscountAmount() {
+        return discountAmount;
+    }
+
+    public void setDiscountAmount(double discountAmount) {
+        this.discountAmount = discountAmount;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Bill [billID=" + billID + ", customer=" + customer + ", staff=" + staff + ", date=" + date + ", total="
+                + total + ", discountAmount=" + discountAmount + ", status=" + status + "]";
+    }
+
 }

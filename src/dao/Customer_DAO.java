@@ -1,19 +1,19 @@
 package dao;
 
-public class Customer_DAO {
-    public void insertCustomer() {
-        // code here
-    }
+import java.util.List;
 
-    public void updateCustomer() {
-        // code here
-    }
+import entity.Customer;
 
-    public void deleteCustomer() {
-        // code here
-    }
+public interface Customer_DAO {
+    public List<Customer> getTatCaCustomer();
 
-    public void getCustomer() {
-        // code here
-    }
+    public boolean themCustomer(Customer customer);
+
+    public boolean capNhatThongTinCustomer(Customer customer);
+
+    public boolean xoaCustomer(String customerID);
+
+    public List<Customer> timKiemCustomer(String noiDungTim);
+
+    public Customer layThongTinCustomerTheoMaCustomer(String customerID);
 }

@@ -1,10 +1,12 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Customer {
+public class Customer implements Serializable {
     private String customerID;
     private String name;
+    private String Genders;
     private String address;
     private String phoneNumber;
     private String email;
@@ -17,14 +19,19 @@ public class Customer {
         this.customerID = customerID;
     }
 
-    public Customer(String customerID, String name, String address, String phoneNumber, String email,
+    public Customer(String customerID, String name, String genders, String address, String phoneNumber, String email,
             Date dateOfBirth) {
         this.customerID = customerID;
         this.name = name;
+        Genders = genders;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Customer(String maKH, String tenKH, String soDienThoai, Boolean gioiTinh) {
+        //TODO Auto-generated constructor stub
     }
 
     public String getCustomerID() {
@@ -75,6 +82,14 @@ public class Customer {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public String getGenders() {
+        return Genders;
+    }
+
+    public void setGenders(String genders) {
+        Genders = genders;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -102,8 +117,8 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer [customerID=" + customerID + ", name=" + name + ", address=" + address + ", phoneNumber="
-                + phoneNumber + ", email=" + email + ", dateOfBirth=" + dateOfBirth + "]";
+        return "Customer [customerID=" + customerID + ", name=" + name + ", Genders=" + Genders + ", address=" + address
+                + ", phoneNumber=" + phoneNumber + ", email=" + email + ", dateOfBirth=" + dateOfBirth + "]";
     }
 
 }

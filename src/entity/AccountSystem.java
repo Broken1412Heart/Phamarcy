@@ -1,7 +1,10 @@
 package entity;
 
-public class AccountSystem {
+import java.io.Serializable;
+
+public class AccountSystem implements Serializable {
     private String password;
+    private Staff staff;
 
     public AccountSystem() {
     }
@@ -17,5 +20,18 @@ public class AccountSystem {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountSystem [password=" + password + ", staff=" + staff + "]";
+    }
+
 }
