@@ -1,9 +1,12 @@
 package ui;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -14,10 +17,15 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -27,10 +35,20 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
-import entity.Staff;
+import entity.Medicone;
 import entity.StaffList;
 
 public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseListener {
+
+	public static Component contentPane;
+	JMenuBar menuBar = new JMenuBar();
+	JMenu menuHeThong = new JMenu("Hệ thống");
+	JMenu menuThuoc = new JMenu("Thuốc");
+	JMenu menuNhanVien = new JMenu("Nhân viên");
+	JMenu menuKhachHang = new JMenu("Khách hàng");
+	JMenu menuHoaDon = new JMenu("Hoá đơn");
+	JMenu menuThongKe = new JMenu("Danh sách thống kê");
+	JMenu menuHoTro = new JMenu("Hỗ trợ");
 
 	private JTextField txtID, txtName, txtYear, txtDiaChi, txtIDCard, txtPhoneNumber;
 	private JButton btnAdd, btnClear, btnModify, btnDelete, btnSave;
@@ -52,6 +70,7 @@ public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseLi
 	String[] col = { "Mã nhân viên", "Họ và tên", "Chức vụ", "Giới tính", "Ngày sinh", "Ngày đi làm",
 			"Sôs điện thoại", "Địa chỉ", "Số CCCD" };
 	private JComboBox cboRole;
+	private String topPanel;
 
 	public ScreenStaffUpdate() {
 		// TODO Auto-generated constructor stub
@@ -65,19 +84,92 @@ public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseLi
 	}
 
 	public void addControl() {
-		// Create menu bar
+		JPanel pnMain = new JPanel();
+		// Tạo menu bar
 		JMenuBar menuBar = new JMenuBar();
-		String[] mainMenuNames = { "Hệ thống", "Thuốc", "Nhân viên", "Khách hàng", "Hoá đơn", "Danh sách thống kê",
+		String[] mainMenuNames = { "Hệ thống", "Thuốc",
+				"Nhân viên", "Khách hàng", "Hoá đơn", "Danh sách thống kê",
 				"Hỗ trợ" };
-		String[][] subMenuNames = {
-				{ "Item 1", "Item 2" }, // Hệ thống
-				{ "Item 1", "Item 2", "Item 3" }, // Thuốc
-				{ "Item 1", "Item 2", "Item 3" }, // Nhân viên
-				{ "Item 1", "Item 2", "Item 3" }, // Khách hàng
-				{}, // Hoá đơn (không có submenu)
-				{}, // Danh sách thống kê (không có submenu)
-				{} // Hỗ trợ (không có submenu)
-		};
+		menuBar.setFont(new Font("Arial", Font.BOLD, 20)); // Thiết lập font và kích thước chữ
+		// for (String menuName : mainMenuNames) {
+		// JMenu menu = new JMenu(menuName);
+		// menuBar.add(menu);
+		// }
+		setJMenuBar(menuBar);
+		setVisible(true);
+		// Add sub menu bar
+		// Hệ thống" gồm có "Đăng nhập bằng tài khoản khác" và "Thoát"
+		JMenuItem menuItem1 = new JMenuItem("Đăng nhập bằng tài khoản khác");
+		JMenuItem menuItem2 = new JMenuItem("Thoát");
+		menuHeThong.add(menuItem1);
+		menuHeThong.add(menuItem2);
+		menuBar.add(menuHeThong);
+		// Thuốc" gồm có "Danh sách thuốc" và "Thêm thuốc" và "Sửa thông tin thuốc" và
+		// "Xóa thuốc"
+		JMenuItem menuItem3 = new JMenuItem("Danh sách thuốc");
+		JMenuItem menuItem4 = new JMenuItem("Thêm thuốc");
+		JMenuItem menuItem5 = new JMenuItem("Sửa thông tin thuốc");
+		JMenuItem menuItem6 = new JMenuItem("Xóa thuốc");
+		menuThuoc.add(menuItem3);
+		menuThuoc.add(menuItem4);
+		menuThuoc.add(menuItem5);
+		menuThuoc.add(menuItem6);
+		menuBar.add(menuThuoc);
+		// Nhân viên" gồm có "Danh sách nhân viên" và "Thêm nhân viên" và "Sửa thông tin
+		// nhân viên" và "Xóa nhân viên"
+		JMenuItem menuItem7 = new JMenuItem("Danh sách nhân viên");
+		JMenuItem menuItem8 = new JMenuItem("Thêm nhân viên");
+		JMenuItem menuItem9 = new JMenuItem("Sửa thông tin nhân viên");
+		JMenuItem menuItem10 = new JMenuItem("Xóa nhân viên");
+		menuNhanVien.add(menuItem7);
+		menuNhanVien.add(menuItem8);
+		menuNhanVien.add(menuItem9);
+		menuNhanVien.add(menuItem10);
+		menuBar.add(menuNhanVien);
+		// Khách hàng" gồm có "Danh sách khách hàng" và "Thêm khách hàng" và "Sửa thông
+		// tin khách hàng" và "Xóa khách hàng"
+		JMenuItem menuItem11 = new JMenuItem("Danh sách khách hàng");
+		JMenuItem menuItem12 = new JMenuItem("Thêm khách hàng");
+		JMenuItem menuItem13 = new JMenuItem("Sửa thông tin khách hàng");
+		JMenuItem menuItem14 = new JMenuItem("Xóa khách hàng");
+		menuKhachHang.add(menuItem11);
+		menuKhachHang.add(menuItem12);
+		menuKhachHang.add(menuItem13);
+		menuKhachHang.add(menuItem14);
+		menuBar.add(menuKhachHang);
+		// Hoá đơn" gồm có "Danh sách hoá đơn" và "Thêm hoá đơn" và "Sửa thông tin hoá
+		// đơn" và "Xóa hoá đơn"
+		JMenuItem menuItem15 = new JMenuItem("Danh sách hoá đơn");
+		JMenuItem menuItem16 = new JMenuItem("Thêm hoá đơn");
+		JMenuItem menuItem17 = new JMenuItem("Sửa thông tin hoá đơn");
+		JMenuItem menuItem18 = new JMenuItem("Xóa hoá đơn");
+		menuHoaDon.add(menuItem15);
+		menuHoaDon.add(menuItem16);
+		menuHoaDon.add(menuItem17);
+		menuHoaDon.add(menuItem18);
+		menuBar.add(menuHoaDon);
+		// Danh sách thống kê" gồm có "Danh sách thuốc" và "Danh sách nhân viên" và
+		// "Danh sách khách hàng" và "Danh sách hoá đơn"
+		JMenuItem menuItem19 = new JMenuItem("Danh sách thuốc");
+		JMenuItem menuItem20 = new JMenuItem("Danh sách nhân viên");
+		JMenuItem menuItem21 = new JMenuItem("Danh sách khách hàng");
+		JMenuItem menuItem22 = new JMenuItem("Danh sách hoá đơn");
+		menuThongKe.add(menuItem19);
+		menuThongKe.add(menuItem20);
+		menuThongKe.add(menuItem21);
+		menuThongKe.add(menuItem22);
+		menuBar.add(menuThongKe);
+		// Hỗ trợ" gồm có "Hướng dẫn sử dụng" và "Thông tin phiên bản"
+		JMenuItem menuItem23 = new JMenuItem("Hướng dẫn sử dụng");
+		JMenuItem menuItem24 = new JMenuItem("Thông tin phiên bản");
+		menuHoTro.add(menuItem23);
+		menuHoTro.add(menuItem24);
+		menuBar.add(menuHoTro);
+		// =========
+		// Tạo giao diện
+		// pnMain = new JPanel();
+
+		pnMain.setLayout(new BoxLayout(pnMain, BoxLayout.Y_AXIS));
 
 		JPanel pnRecord = new JPanel();
 		pnRecord.setLayout(new BoxLayout(pnRecord, BoxLayout.X_AXIS));
@@ -255,20 +347,20 @@ public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseLi
 	}
 
 	public void cleadCbo() {
-		for (Staff i : StaffList.getAll())
+		for (Medicone i : StaffList.getAll())
 			cboSearchByID.removeItem(i);
 	}
 
 	@SuppressWarnings("unchecked")
 	public void loadCbo() {
 		cboModel = new DefaultComboBoxModel();
-		for (Staff i : StaffList.getAll())
+		for (Medicone i : StaffList.getAll())
 			cboModel.addElement(i.getStaffID());
 		cboSearchByID.setModel(cboModel);
 	}
 
-	public void loadDataToTable(ArrayList<Staff> lst, DefaultTableModel tblModel) {
-		for (Staff i : lst) {
+	public void loadDataToTable(ArrayList<Medicone> lst, DefaultTableModel tblModel) {
+		for (Medicone i : lst) {
 			Object[] obj = { i.getStaffID(), i.getStaffName(), i.getStaffPhone(), i.getStaffEmail(),
 					i.getStaffAddress(), i.getStaffPosition(), i.getStaffStatus() };
 			tblModel.addRow(obj);
@@ -279,23 +371,13 @@ public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseLi
 
 	}
 
-	public Staff taoStaff() {
-		// String ma, tua, tacgia, nxb, ibs;
-		// double dongia;
-		// int nam;
-		// ma = txtMa.getText();
-		// tua = txtTua.getText();
-		// tacgia = txtTacGia.getText();
-		// nxb = txtNhaXuatBan.getText();
-		// ibs = txtISBN.getText();
-		// dongia = Double.parseDouble(txtDonGia.getText());
-		// nam = Integer.parseInt(txtNam.getText());
-		// int soTrang = Integer.parseInt(txtSoTrang.getText());
-		Staff a = new Staff();
+	public Medicone taoStaff() {
+
+		Medicone a = new Medicone();
 		return a;
 	}
 
-	public void StaffToTextBox(Staff item) {
+	public void StaffToTextBox(Medicone item) {
 		// txtMa.setText(item.getMaS());
 		// txtTua.setText(item.getTuaStaff());
 		// txtTacGia.setText(item.getTacGia());
@@ -313,37 +395,16 @@ public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseLi
 			return false;
 		} else {
 			String thongBao = "";
-			// Mã sách
+			// Mã nhân viên
 			char ch = txtName.getText().charAt(0);
 			String patternStrMa = "^" + ch + "[0-9]{3}$";
 			Pattern patternMa = Pattern.compile(patternStrMa, Pattern.CASE_INSENSITIVE);
 			Matcher matchMa = patternMa.matcher(txtID.getText());
 			Boolean matchFoundMa = matchMa.matches();
 
-			// Tựa sách & Tác giả
-			// Java
-			String patternStrTen = "^([A-Z][a-z]+\\s?)+";
-			Pattern patternTen = Pattern.compile(patternStrTen);
-			Matcher matchTen = patternTen.matcher(txtName.getText());
-			Boolean matchFoundTua = matchTen.matches();
-			Matcher matchTacGia = patternTen.matcher(txtDiaChi.getText());
-			Boolean matchFoundTacGia = matchTacGia.matches();
-
-			// ISBN
-			// 16666-444-333-888
-			String patternStrISBN = "^(\\d+-){3}\\d+(-\\d+)?$";
-			Pattern patternISBN = Pattern.compile(patternStrISBN);
-			Matcher matchISBN = patternISBN.matcher(txtPhoneNumber.getText());
-			Boolean matchFoundISBN = matchISBN.matches();
-
 			if (!matchFoundMa)
-				thongBao += "Mã sách phải có ký tự đầu là ký tự đầu của tựa sách, theo sau là 3 ký số!";
-			if (!matchFoundTua)
-				thongBao += "\nTựa sách gồm nhiều từ ngăn cách bởi khoảng trắng. Không chứa ký số hoặc các ký tự đặc biệt khác, ngoại trừ ký tự '.'!";
-			if (!matchFoundTacGia)
-				thongBao += "\nTác giả gồm nhiều từ ngăn cách bởi khoảng trắng. Không chứa ký số hoặc các ký tự đặc biệt khác, ngoại trừ ký tự '.'!";
-			if (!matchFoundISBN)
-				thongBao += "\nISBN có mẫu dạng X-X-X-X (hoặc X-X-X-X-X). Trong đó, X gồm các ký số, ít nhất là 1 ký số!";
+				thongBao += "Mã nhân viên phải có ký tự đầu là Emp tiếp sau phải là số từ 0 đến 9!";
+
 			if (thongBao.isEmpty())// không có lỗi
 				return true;
 			else {
@@ -360,9 +421,9 @@ public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseLi
 		Object obj = e.getSource();
 		if (obj.equals(btnAdd)) {
 			if (kiemTraTextBox()) {
-				Staff a = taoStaff();
+				Medicone a = taoStaff();
 				if (lstStaff.getAll().contains(a))
-					JOptionPane.showMessageDialog(null, "Mã sách không được trùng!!!");
+					JOptionPane.showMessageDialog(null, "Mã nhân viên không được trùng!!!");
 				else {
 					lstStaff.addStaff(a);
 					Object[] ob = {};
@@ -391,7 +452,7 @@ public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseLi
 					int hoi = JOptionPane.showConfirmDialog(null, "Ban co muon sua khong? ", "ThongBao",
 							JOptionPane.YES_NO_OPTION);
 					if (hoi == JOptionPane.YES_OPTION) {
-						Staff a = taoStaff();
+						Medicone a = taoStaff();
 						lstStaff.updateStaff(a);
 						tblStaff.setModel(tblModelStaff = new DefaultTableModel(col, 0));
 						loadDataToTable(lstStaff.getAll(), tblModelStaff);
@@ -405,18 +466,18 @@ public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseLi
 				int hoi = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa không?", "Thông Báo",
 						JOptionPane.YES_NO_OPTION);
 				if (hoi == JOptionPane.YES_OPTION) {
-					Staff a = lstStaff.getAll().get(select);
+					Medicone a = lstStaff.getAll().get(select);
 					lstStaff.deleteStaff(a);
 					tblModelStaff.removeRow(select);
 					loadCbo();
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Chưa chọn cuốn sách để xóa");
+				JOptionPane.showMessageDialog(null, "Chưa chọn đối tượng để xóa");
 
 			}
 		} else if (e.getSource().equals(cboSearchByID)) {
 			String chon = (String) cboSearchByID.getSelectedItem();
-			Staff a = lstStaff.searchId(chon);
+			Medicone a = lstStaff.searchId(chon);
 			tblStaff.setModel(tblModelStaff = new DefaultTableModel(col, 0));
 			Object[] ob = {};
 			tblModelStaff.addRow(ob);

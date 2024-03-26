@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class AccountSystem implements Serializable {
     private String password;
-    private Staff staff;
+    private Medicone staff;
 
     public AccountSystem() {
     }
@@ -21,11 +21,11 @@ public class AccountSystem implements Serializable {
         this.password = password;
     }
 
-    public Staff getStaff() {
+    public Medicone getStaff() {
         return staff;
     }
 
-    public void setStaff(Staff staff) {
+    public void setStaff(Medicone staff) {
         this.staff = staff;
     }
 

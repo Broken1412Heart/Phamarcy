@@ -2,18 +2,18 @@ package dao;
 
 import java.util.List;
 
-import entity.Staff;
+import entity.Medicone;
 
 public interface Staff_DAO {
-    public List<Staff> getTatCaStaff();
+    public List<Medicone> getTatCaStaff();
 
-    public boolean themStaff(Staff Staff);
+    public boolean themStaff(Medicone Staff);
 
-    public boolean capNhatThongTinStaff(Staff Staff);
+    public boolean capNhatThongTinStaff(Medicone Staff);
 
     public boolean xoaStaff(String maStaff);
 
-    public List<Staff> timKiemStaff(String noiDungTim);
+    public List<Medicone> timKiemStaff(String noiDungTim);
 
-    public Staff layThongTinStaffTheoMaStaff(String maStaff);
+    public Medicone layThongTinStaffTheoMaStaff(String maStaff);
 }

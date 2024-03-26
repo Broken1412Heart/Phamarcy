@@ -5,7 +5,7 @@ import javax.swing.border.EmptyBorder;
 
 import connectDB.ConnectDataBase;
 import entity.AccountSystem;
-import entity.Staff;
+import entity.Medicone;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -32,7 +32,7 @@ public class ScreenLogin extends JFrame implements ActionListener, KeyListener, 
     protected static String usernameToLogin;
     protected static AccountSystem account = new AccountSystem();
 
-    protected static Staff staff = new Staff();
+    protected static Medicone staff = new Medicone();
 
     public ScreenLogin() {
         setTitle("Pharmacy Management System");
@@ -139,9 +139,9 @@ public class ScreenLogin extends JFrame implements ActionListener, KeyListener, 
                 usernameToLogin = txtAccount.getText();
                 // System.out.println("1 " + usernameToGetNhanVien);
                 ScreenMainOfEmployee main_screen = new ScreenMainOfEmployee();
-                main_screen.menuStaff.setEnabled(false);
-                main_screen.menuStatisticRevenue.setEnabled(false);
-                main_screen.menuStatisticsBestSale.setEnabled(false);
+                // main_screen.menuStaff.setEnabled(false);
+                // main_screen.menuStatisticRevenue.setEnabled(false);
+                // main_screen.menuStatisticsBestSale.setEnabled(false);
                 main_screen.setVisible(true);
                 this.setVisible(false);
             } else if (LoginCheck(userLoginString, passwordString) && LoginStatus == true) {

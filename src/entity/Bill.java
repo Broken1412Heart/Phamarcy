@@ -5,7 +5,7 @@ import java.util.Date;
 public class Bill {
     private String billID;
     protected Customer customer;
-    protected Staff staff;
+    protected Medicone staff;
     private Date date;
     private double total;
     private double discountAmount;
@@ -19,7 +19,7 @@ public class Bill {
         this.billID = billID;
     }
 
-    public Bill(String billID, Customer customer, Staff staff, Date date, double total, double discountAmount) {
+    public Bill(String billID, Customer customer, Medicone staff, Date date, double total, double discountAmount) {
         this.billID = billID;
         this.customer = customer;
         this.staff = staff;
@@ -44,11 +44,11 @@ public class Bill {
         this.customer = customer;
     }
 
-    public Staff getStaff() {
+    public Medicone getStaff() {
         return staff;
     }
 
-    public void setStaff(Staff staff) {
+    public void setStaff(Medicone staff) {
         this.staff = staff;
     }
 

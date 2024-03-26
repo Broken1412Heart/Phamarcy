@@ -15,7 +15,7 @@ import entity.Bill;
 import entity.BillDetail;
 import entity.Customer;
 import entity.Medicine;
-import entity.Staff;
+import entity.Medicone;
 import entity.Supplier;
 
 public class Bill_implement implements Bill_DAO {
@@ -243,7 +243,7 @@ public class Bill_implement implements Bill_DAO {
                 String maKH = rs.getString(5);
                 Double giamGia = rs.getDouble(6);
 
-                Staff nv = new Staff(maNV);
+                Medicone nv = new Medicone(maNV);
                 Customer kh = new Customer(maKH);
 
                 hd.setBillID(maHD);
@@ -279,7 +279,7 @@ public class Bill_implement implements Bill_DAO {
                 String maKH = rs.getString("maKhachHang");
                 Double giamGia = rs.getDouble("giamGia");
 
-                Staff nv = new Staff(maNV);
+                Medicone nv = new Medicone(maNV);
                 Customer kh = new Customer(maKH);
 
                 hd.setBillID(maHD);

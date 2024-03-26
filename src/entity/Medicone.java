@@ -2,7 +2,7 @@ package entity;
 
 import java.util.Date;
 
-public class Staff {
+public class Medicone {
     private String staffID;
     private String staffName;
     private String staffIndentifyCard;
@@ -15,14 +15,14 @@ public class Staff {
     private Date staffDOB;
     private Date staffStartDate;
 
-    public Staff() {
+    public Medicone() {
     }
 
-    public Staff(String staffID) {
+    public Medicone(String staffID) {
         this.staffID = staffID;
     }
 
-    public Staff(String staffID, String staffName, String staffIndentifyCard, String staffPhone, String staffEmail,
+    public Medicone(String staffID, String staffName, String staffIndentifyCard, String staffPhone, String staffEmail,
             String staffAddress, String staffRole, boolean staffStatus, boolean staffGender, Date staffDOB,
             Date staffStartDate) {
         this.staffID = staffID;
@@ -142,7 +142,7 @@ public class Staff {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Staff other = (Staff) obj;
+        Medicone other = (Medicone) obj;
         if (staffID == null) {
             if (other.staffID != null)
                 return false;
@@ -168,6 +168,5 @@ public class Staff {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getStaffStatus'");
     }
-    
-    
+
 }
