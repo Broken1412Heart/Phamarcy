@@ -65,8 +65,19 @@ public class ScreenStaffUpdate extends JFrame implements ActionListener, MouseLi
 	}
 
 	public void addControl() {
-		JPanel pnMain = new JPanel();
-		pnMain.setLayout(new BoxLayout(pnMain, BoxLayout.Y_AXIS));
+		// Create menu bar
+		JMenuBar menuBar = new JMenuBar();
+		String[] mainMenuNames = { "Hệ thống", "Thuốc", "Nhân viên", "Khách hàng", "Hoá đơn", "Danh sách thống kê",
+				"Hỗ trợ" };
+		String[][] subMenuNames = {
+				{ "Item 1", "Item 2" }, // Hệ thống
+				{ "Item 1", "Item 2", "Item 3" }, // Thuốc
+				{ "Item 1", "Item 2", "Item 3" }, // Nhân viên
+				{ "Item 1", "Item 2", "Item 3" }, // Khách hàng
+				{}, // Hoá đơn (không có submenu)
+				{}, // Danh sách thống kê (không có submenu)
+				{} // Hỗ trợ (không có submenu)
+		};
 
 		JPanel pnRecord = new JPanel();
 		pnRecord.setLayout(new BoxLayout(pnRecord, BoxLayout.X_AXIS));
