@@ -19,3 +19,6 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 
 ## Enterprise Service Bus 
 Enterprise Service Bus (ESB) là thành phần trọng tâm trong một hệ thống phân tán, giúp kết nối các thành phần
+
+## DAO - DataAccessObject 
+là một interface định nghĩa các phương thức trừu tượng việc triển khai truy cập dữ liệu cơ bản cho BusinessObject 

@@ -21,7 +21,7 @@ import entity.Medicine;
 //import dto.Phong;
 import java.awt.Color;
 
-public class form_Trang_Chu extends JFrame {
+public class MainPage extends JFrame {
 
 	/**
 	 * 
@@ -30,8 +30,10 @@ public class form_Trang_Chu extends JFrame {
 	public static JPanel contentPane;
 	private JList<Medicine> listSanPham;
 	private DefaultListModel<Medicine> listModelSanPham;
-//	private ThongKeSanPhamSersvice thongKeSanPhamSersvice = new ThongKeSanPhamServiceImpl();
+	// private ThongKeSanPhamSersvice thongKeSanPhamSersvice = new
+	// ThongKeSanPhamServiceImpl();
 	public static JScrollPane scrollSP;
+
 	/**
 	 * Launch the application.
 	 */
@@ -39,7 +41,7 @@ public class form_Trang_Chu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					form_Trang_Chu frame = new form_Trang_Chu();
+					MainPage frame = new MainPage();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,8 +53,8 @@ public class form_Trang_Chu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public form_Trang_Chu() {
-		//DAO
+	public MainPage() {
+		// DAO
 		try {
 			ConnectDataBase.getInstance().connect();
 		} catch (Exception e) {
@@ -64,46 +66,47 @@ public class form_Trang_Chu extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(240, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-//		contentPane.setPreferredSize(new Dimension(200,100));
-//		scrollSP = new JScrollPane(contentPane);
-//		scrollSP.setBorder(null);
-//		scrollSP.setPreferredSize(new Dimension(800,600));
-//		getContentPane().add(scrollSP);
+		// contentPane.setPreferredSize(new Dimension(200,100));
+		// scrollSP = new JScrollPane(contentPane);
+		// scrollSP.setBorder(null);
+		// scrollSP.setPreferredSize(new Dimension(800,600));
+		// getContentPane().add(scrollSP);
 		setSize(1380, 780);
 		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.setBackground(new Color(240, 255, 255));
 		panel.setForeground(Color.BLACK);
 		panel.setBounds(0, 0, 1362, 686);
 		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
-//		panel.setLayout(null);
+		// panel.setLayout(null);
 		panel.setBorder(null);
-		
+
 		listModelSanPham = new DefaultListModel<Medicine>();
 		listSanPham = new JList<Medicine>(listModelSanPham);
 		listSanPham.setForeground(new Color(240, 240, 240));
 		listSanPham.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		listSanPham.setVisibleRowCount(0);
-	
-		panel.add(listSanPham, BorderLayout.CENTER);	
-//		panel.add(scrollSP, BorderLayout.EAST);	
+
+		panel.add(listSanPham, BorderLayout.CENTER);
+		// panel.add(scrollSP, BorderLayout.EAST);
 		contentPane.add(panel);
-		
+
 		createListSanPham();
 	}
-	
+
 	private void createListSanPham() {
 		listModelSanPham.clear();
-//		ArrayList<Medicine> danhSachSanPham = thongKeSanPhamSersvice.get10SanPhamBanChay();
-//		for (Medicine sanPham : danhSachSanPham) {
-//			listModelSanPham.addElement(sanPham);
-		}
-		
-//		listSanPham.setBackground(new Color(240, 255, 255));
-//		listSanPham.setModel(listModelSanPham);
-//		listSanPham.setCellRenderer(new SanPhamBanChayRenDerer());	
-//	}
+		// ArrayList<Medicine> danhSachSanPham =
+		// thongKeSanPhamSersvice.get10SanPhamBanChay();
+		// for (Medicine sanPham : danhSachSanPham) {
+		// listModelSanPham.addElement(sanPham);
+	}
+
+	// listSanPham.setBackground(new Color(240, 255, 255));
+	// listSanPham.setModel(listModelSanPham);
+	// listSanPham.setCellRenderer(new SanPhamBanChayRenDerer());
+	// }
 }

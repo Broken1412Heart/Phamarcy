@@ -409,7 +409,7 @@ public class Bill_implement implements Bill_DAO {
                 String tenKH = rs.getString("tencustomer");
                 String soDienThoai = rs.getString("soDienThoai");
                 Boolean gioiTinh = rs.getBoolean("gioiTinh");
-                customer = new Customer(soDienThoai, sdt, sql, maKH, tenKH, soDienThoai, null);
+                customer = new Customer(maKH, tenKH, soDienThoai, gioiTinh);
             }
         } catch (Exception e2) {
             e2.printStackTrace();
@@ -432,7 +432,7 @@ public class Bill_implement implements Bill_DAO {
                 String tenKH = rs.getString("tenKhachHang");
                 String soDienThoai = rs.getString("soDienThoai");
                 Boolean gioiTinh = rs.getBoolean("gioiTinh");
-                customer = new Customer(soDienThoai, tenKHang, sql, maKH, tenKH, soDienThoai, null);
+                customer = new Customer(soDienThoai, tenKH, soDienThoai, gioiTinh);
             }
         } catch (Exception e2) {
             e2.printStackTrace();

@@ -5,15 +5,15 @@ import java.util.List;
 import entity.Customer;
 
 public interface Customer_DAO {
-    public List<Customer> getTatCaCustomer();
+    public List<Customer> getAllCustomer();
 
-    public boolean themCustomer(Customer customer);
+    public boolean addCustomer(Customer customer);
 
-    public boolean capNhatThongTinCustomer(Customer customer);
+    public boolean updateCustomer(Customer customer);
 
-    public boolean xoaCustomer(String customerID);
+    public boolean deleteCustomer(String customerID);
 
-    public List<Customer> timKiemCustomer(String noiDungTim);
+    public List<Customer> SearchCustomer(String searchContent);
 
-    public Customer layThongTinCustomerTheoMaCustomer(String customerID);
+    public Customer getInfomationOfCusomer(String customerID);
 }

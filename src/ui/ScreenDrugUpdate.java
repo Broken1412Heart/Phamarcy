@@ -189,7 +189,7 @@ public class ScreenDrugUpdate extends JFrame implements ActionListener, MouseLis
         pnMedicineName.add(lblTuaMedicine = new JLabel("Tên thuốc:"));
         FlowLayout flowLayout2 = (FlowLayout) pnMedicineName.getLayout();
         flowLayout2.setAlignment(FlowLayout.LEFT);
-        pnMedicineName.add(txtMedicineName = new JTextField(40));
+        pnMedicineName.add(txtMedicineName = new JTextField(25));
         txtMedicineName.setText("Metoprolol 50mg");
         pnLeftOfNorth.add(pnMedicineName);
         pnLeftOfNorth.add(Box.createVerticalStrut(5));
@@ -225,6 +225,24 @@ public class ScreenDrugUpdate extends JFrame implements ActionListener, MouseLis
         fl1.setAlignment(FlowLayout.LEFT);
         pnMiddleOfNorth.add(pnStatus);
 
+        //Thêm đơn giá và số lượng 
+        JPanel pnPrice = new JPanel();
+        pnPrice.add(lblDonGia = new JLabel("Đơn giá:"));
+        FlowLayout fl2 = (FlowLayout) pnPrice.getLayout();
+        fl2.setAlignment(FlowLayout.LEFT);
+        JTextField txtPrice = new JTextField(28);
+        pnPrice.add(txtPrice);
+        pnMiddleOfNorth.add(pnPrice);
+
+        JPanel pnQuantity = new JPanel();
+        pnQuantity.add(lblDonGia = new JLabel("Số lượng:"));
+        FlowLayout fl3 = (FlowLayout) pnQuantity.getLayout();
+        fl3.setAlignment(FlowLayout.LEFT);
+        JTextField txtQuantity = new JTextField(28);
+        pnQuantity.add(txtQuantity);
+        pnMiddleOfNorth.add(pnQuantity);
+
+
         pnRecord.add(pnMiddleOfNorth);
         JPanel pnRightOfNorth = new JPanel();
         pnRightOfNorth.setLayout(new BoxLayout(pnRightOfNorth, BoxLayout.Y_AXIS));
@@ -235,6 +253,18 @@ public class ScreenDrugUpdate extends JFrame implements ActionListener, MouseLis
         fl4.setAlignment(FlowLayout.LEFT);
         pnNhaCungCap.add(txtNhaCungCap = new JTextField(40));
         pnRightOfNorth.add(pnNhaCungCap);
+
+
+        //JtextField hạn sử dụng date ngày tháng năm
+        JPanel pnExpiryDate = new JPanel();
+        pnExpiryDate.add(lblDonGia = new JLabel("Hạn sử dụng:"));
+        FlowLayout fl5 = (FlowLayout) pnExpiryDate.getLayout();
+        fl5.setAlignment(FlowLayout.LEFT);
+        JDateChooser txtExpiryDate = new JDateChooser();
+        txtExpiryDate.setPreferredSize(new Dimension(380, 20));
+        pnExpiryDate.add(txtExpiryDate);
+        pnRightOfNorth.add(pnExpiryDate);
+
 
         pnRecord.add(pnRightOfNorth);
 
