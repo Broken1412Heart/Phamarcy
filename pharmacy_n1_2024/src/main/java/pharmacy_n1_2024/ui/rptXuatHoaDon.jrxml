@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptXuatHoaDon" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2eb24723-8a08-43e9-8cd4-4d08df639d22">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TheSky"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="745"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="241"/>
+	<parameter name="maNhanVien" class="java.lang.String"/>
+	<parameter name="ngayHomNay" class="java.sql.Date"/>
+	<parameter name="tongTien" class="java.lang.Double"/>
+	<parameter name="hoadonChon" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT  Chi_Tiet_Hoa_Don.maHoaDon, ngayDat, Nhan_Vien.tenNhanVien, Khach_Hang.tenentity.Staff, Khach_Hang.maentity.Staff, San_Pham.maSanPham, San_Pham.tenSanPham, San_Pham.kichThuoc, San_Pham.mauSac, San_Pham.donGia, Chi_Tiet_Hoa_Don.soLuong, sum(Chi_Tiet_Hoa_Don.[soLuong] * [donGia] * (1 - San_Pham.[giamGia])) + sum(Chi_Tiet_Hoa_Don.[soLuong] * [donGia] * (1 - San_Pham.[giamGia]))*0.1 - (sum(Chi_Tiet_Hoa_Don.[soLuong] * [donGia] * (1 - San_Pham.[giamGia]))*(Hoa_Don.giamGia))/100 AS ThanhTien    
+FROM            Chi_Tiet_Hoa_Don INNER JOIN
+                         Hoa_Don ON Chi_Tiet_Hoa_Don.maHoaDon = Hoa_Don.maHoaDon INNER JOIN
+                         San_Pham ON Chi_Tiet_Hoa_Don.maSanPham = San_Pham.maSanPham INNER JOIN
+                         Khach_Hang ON Hoa_Don.maentity.Staff = Khach_Hang.maentity.Staff INNER JOIN
+                         Nhan_Vien ON Hoa_Don.maNhanVien = Nhan_Vien.maNhanVien
+WHERE Nhan_Vien.maNhanVien = $P{maNhanVien} and ngayDat = $P{ngayHomNay} and Hoa_Don.trangThai = 1 and Hoa_Don.maHoaDon = $P{hoadonChon}
+GROUP BY Chi_Tiet_Hoa_Don.maHoaDon, ngayDat, Nhan_Vien.tenNhanVien, Khach_Hang.tenentity.Staff, Khach_Hang.maentity.Staff, San_Pham.maSanPham, San_Pham.tenSanPham, San_Pham.kichThuoc, San_Pham.mauSac, San_Pham.donGia, Chi_Tiet_Hoa_Don.soLuong, San_Pham.[giamGia], Hoa_Don.giamGia]]>
+	</queryString>
+	<field name="maHoaDon" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="maHoaDon"/>
+		<property name="com.jaspersoft.studio.field.label" value="maHoaDon"/>
+	</field>
+	<field name="ngayDat" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="ngayDat"/>
+		<property name="com.jaspersoft.studio.field.label" value="ngayDat"/>
+	</field>
+	<field name="tenNhanVien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tenNhanVien"/>
+		<property name="com.jaspersoft.studio.field.label" value="tenNhanVien"/>
+	</field>
+	<field name="tenentity.Staff" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tenentity.Staff"/>
+		<property name="com.jaspersoft.studio.field.label" value="tenentity.Staff"/>
+	</field>
+	<field name="maentity.Staff" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="maentity.Staff"/>
+		<property name="com.jaspersoft.studio.field.label" value="maentity.Staff"/>
+	</field>
+	<field name="maSanPham" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="maSanPham"/>
+		<property name="com.jaspersoft.studio.field.label" value="maSanPham"/>
+	</field>
+	<field name="tenSanPham" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tenSanPham"/>
+		<property name="com.jaspersoft.studio.field.label" value="tenSanPham"/>
+	</field>
+	<field name="kichThuoc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kichThuoc"/>
+		<property name="com.jaspersoft.studio.field.label" value="kichThuoc"/>
+	</field>
+	<field name="mauSac" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mauSac"/>
+		<property name="com.jaspersoft.studio.field.label" value="mauSac"/>
+	</field>
+	<field name="donGia" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="donGia"/>
+		<property name="com.jaspersoft.studio.field.label" value="donGia"/>
+	</field>
+	<field name="soLuong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="soLuong"/>
+		<property name="com.jaspersoft.studio.field.label" value="soLuong"/>
+	</field>
+	<field name="ThanhTien" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="ThanhTien"/>
+		<property name="com.jaspersoft.studio.field.label" value="ThanhTien"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="182" y="10" width="194" height="20" uuid="e2c44755-00f1-4584-a627-f1528e2e1672"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="14" isBold="true" isStrikeThrough="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[HÓA ĐƠN BÁN HÀNG]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="84" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="17" width="73" height="20" uuid="cae96814-089e-4633-8a8b-ce721aef6a74"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Mã hóa đơn:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="93" y="17" width="129" height="20" uuid="ca3f253f-9be4-4dae-a16f-a898cad39b1d"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{hoadonChon}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="37" width="73" height="20" uuid="c5d122c1-468a-4e1b-b0e7-6fd3c7e6e44c"/>
+				<textElement>
+					<font fontName="DejaVu Sans" isStrikeThrough="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Ngày tạo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="93" y="37" width="129" height="20" uuid="0984d6ba-1ae9-48e5-b0c1-90c704a223d0"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ngayDat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="57" width="73" height="20" uuid="7d582af2-27f7-4637-9b73-b74543e95691"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Nhân viên:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="93" y="57" width="129" height="20" uuid="79d3d4d1-6e1d-4354-822b-803eb1f5f539"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenNhanVien}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="17" width="73" height="20" uuid="0103dd59-a4b1-4553-a207-a9422b7f9b09"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Khách hàng:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="353" y="17" width="171" height="20" uuid="084d2f60-c2b5-4fbb-94cf-0ba0c970923d"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenentity.Staff}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="37" width="73" height="20" uuid="0cf14be5-404a-4887-889e-b4ed3d92c226"/>
+				<textElement>
+					<font fontName="DejaVu Sans" isStrikeThrough="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Mã KH:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="353" y="37" width="171" height="20" uuid="96b7868d-12d1-4748-98f6-22a26ef69206"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{maentity.Staff}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="57" width="73" height="20" uuid="c7c238c1-f3d7-4c61-8ae0-f90e1f501b90"/>
+				<textElement>
+					<font fontName="DejaVu Sans" isStrikeThrough="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="353" y="57" width="171" height="20" uuid="78b2e0fa-93b4-4dfa-9f04-6ee9528999ab"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="-11" y="10" width="91" height="20" uuid="ff0ea907-1582-4ab9-be52-278a3c9a92d2"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Mã sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="10" width="90" height="20" uuid="cea36b9d-2242-4417-8a99-eec920a65775"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Tên sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="10" width="80" height="20" uuid="bc50e54a-8b3d-43fc-962a-39a5db40052d"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Kích thước]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="10" width="70" height="20" uuid="b8cb23f3-8601-47bf-868b-816e2f31da9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="10" width="98" height="20" uuid="95a5aae4-588a-4168-b12b-c2bfd56b1443"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Đơn giá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="10" width="80" height="20" uuid="bd84a511-e30f-4b34-bdd5-e21663a7abfe"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Thành tiền]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="10" width="59" height="20" uuid="87fbfc7a-1ff2-4165-a2b9-fc46a7b493ef"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Màu sắc]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-11" y="31" width="571" height="1" uuid="fbc77038-b2c4-441f-9927-2e28f39df7f9"/>
+			</line>
+			<line>
+				<reportElement x="-11" y="6" width="571" height="1" uuid="be744b66-702c-4d4c-b444-34748c93434b"/>
+			</line>
+			<line>
+				<reportElement x="80" y="9" width="1" height="22" uuid="a3f3a4f2-d0d3-4b02-9f8d-d4178298e950"/>
+			</line>
+			<line>
+				<reportElement x="170" y="11" width="1" height="20" uuid="ad644198-733f-462b-af2c-cbbfdc3136b0"/>
+			</line>
+			<line>
+				<reportElement x="250" y="11" width="1" height="19" uuid="224e6fc1-612a-4232-8843-5bb975bae240"/>
+			</line>
+			<line>
+				<reportElement x="309" y="10" width="1" height="20" uuid="7933e90a-7429-4e7a-ac41-14add4c0e490"/>
+			</line>
+			<line>
+				<reportElement x="380" y="10" width="1" height="20" uuid="ec99fca0-d16b-4256-b6ce-7f7b2b4eb4ee"/>
+			</line>
+			<line>
+				<reportElement x="481" y="10" width="1" height="20" uuid="9c57a071-c08d-426a-ad04-bae4f1aadf2b"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="10" width="90" height="21" uuid="a9d62819-613a-42b7-9ac5-f8add2c91806"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isBold="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenSanPham}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="170" y="10" width="80" height="21" uuid="cc4bfd24-421f-41ee-865a-a007b796d9d9"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isBold="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kichThuoc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="10" width="59" height="20" uuid="92fde438-d920-4e0a-8ba2-f251a731668e"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isBold="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mauSac}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="380" y="10" width="99" height="20" uuid="82c9a68f-f606-4832-b62f-b3bae018c007"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isBold="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{donGia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="10" width="80" height="21" uuid="eac8e684-cd76-4a04-87d7-42a5436d53fa"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isBold="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ThanhTien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-9" y="10" width="89" height="20" uuid="da606ac2-f91a-4fc3-a410-4a5b8a3ae541"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isBold="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{maSanPham}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-11" y="30" width="571" height="1" uuid="bd4ecf8d-2ef0-4128-b009-9d635388bb3d"/>
+			</line>
+			<line>
+				<reportElement x="80" y="-31" width="1" height="62" uuid="54b84a4d-607e-48b9-bec3-c82809c17d51"/>
+			</line>
+			<line>
+				<reportElement x="170" y="-31" width="1" height="61" uuid="382b24cf-df06-4e7c-985d-9116397b7281"/>
+			</line>
+			<line>
+				<reportElement x="250" y="-31" width="1" height="61" uuid="5dc608c1-c315-46be-b819-72af5ffdfc3e"/>
+			</line>
+			<line>
+				<reportElement x="309" y="-31" width="1" height="61" uuid="b2506d03-7da7-4c82-87d6-62398745fd8e"/>
+			</line>
+			<line>
+				<reportElement x="380" y="-31" width="1" height="61" uuid="92d14be6-1b53-4386-a436-4f3457bf55f5"/>
+			</line>
+			<line>
+				<reportElement x="481" y="-31" width="1" height="61" uuid="b14f5cbf-a945-445d-88ea-9d032b583d0e"/>
+			</line>
+			<line>
+				<reportElement x="560" y="-20" width="1" height="51" uuid="c7d85480-e507-4bf8-9314-2e9f6ed11383"/>
+			</line>
+			<line>
+				<reportElement x="-11" y="-31" width="1" height="61" uuid="746c499c-87f1-428e-bcc5-81619596a409"/>
+			</line>
+			<textField>
+				<reportElement x="309" y="10" width="70" height="21" uuid="98c2fc50-135e-4a00-b8ff-091e14f497b6"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isBold="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{soLuong}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="560" y="-31" width="1" height="26" uuid="7a7443d8-a1a4-4ffd-8b51-4265c7296877"/>
+			</line>
+			<line>
+				<reportElement x="-11" y="-31" width="1" height="20" uuid="159212c9-4be1-4ede-9f10-d1e5874628a1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="225" y="16" width="135" height="20" uuid="6764ac72-06ea-431e-85f1-b5e4656e474d"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="14" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Tổng tiền:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="380" y="16" width="135" height="20" uuid="3a7fe755-9df7-4ae0-8389-6dbe33099192"/>
+				<textElement>
+					<font fontName="DejaVu Sans" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tongTien}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
